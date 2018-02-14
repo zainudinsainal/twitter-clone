@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20180214043718) do
     t.string "username", null: false
     t.text "bio"
     t.string "image"
+    t.string "name", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
