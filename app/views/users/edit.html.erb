@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-6 offset-md-3">
+
+      <h3>Edit Profile</h3>
+
+      <%= form_for @user do |f| %>
+        <div class="form-group">
+          <%= f.label :name, "Name" %>
+          <%= f.text_field :name, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :username, "Username" %>
+          <%= f.text_field :username, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :bio, "Profile" %>
+          <%= f.text_area :bio, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :image, "Picture" %>
+          <%= image_tag @user.image if @user.image? %>
+          <%= f.file_field :image %>
+        </div>
+
+        <div class="form-group">
+          <%= f.submit "Update", class: "btn btn-primary" %>
+          <%= link_to "Cancel", user_path(@user), class: "btn btn-outline-dark" %>
+        </div>
+      <% end %>
+
+    </div>
+
+  </div>
+</div>

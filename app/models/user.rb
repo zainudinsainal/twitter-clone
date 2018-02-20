@@ -7,5 +7,6 @@ class User < ApplicationRecord
   has_many :tweets
   validates :username, presence: true, uniqueness: true
   validates :name, presence: true
+  mount_uploader :image, ImageUploader
 
 end
