@@ -4,6 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  def admin?
+    self.role == "admin"
+  end
+
   has_many :tweets
   validates :username, presence: true, uniqueness: true
   validates :name, presence: true

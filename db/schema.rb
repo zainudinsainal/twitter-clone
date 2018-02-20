@@ -17,9 +17,11 @@ ActiveRecord::Schema.define(version: 20180220072300) do
 
   create_table "likes", force: :cascade do |t|
     t.bigint "tweet_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["tweet_id"], name: "index_likes_on_tweet_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "tweets", force: :cascade do |t|
@@ -37,6 +39,7 @@ ActiveRecord::Schema.define(version: 20180220072300) do
     t.string "username", null: false
     t.text "bio"
     t.string "image"
+    t.string "role"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -52,5 +55,6 @@ ActiveRecord::Schema.define(version: 20180220072300) do
   end
 
   add_foreign_key "likes", "tweets"
+  add_foreign_key "likes", "users"
   add_foreign_key "tweets", "users"
 end
