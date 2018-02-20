@@ -7,7 +7,7 @@ class TweetsController < ApplicationController
   def index
     @tweet = Tweet.new
     @tweets = Tweet.all
-    
+   # @users = @tweet.find #followers tweets
   end
 
    def create
@@ -22,8 +22,9 @@ class TweetsController < ApplicationController
   end
 
   def show
+    @tweet = Tweet.find(params[:id])
+    @user = @tweet.user
 
-    
   end
 
   def destroy
