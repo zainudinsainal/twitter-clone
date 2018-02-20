@@ -16,8 +16,23 @@
 <div class="card d-flex justify-content-center" style="width: 18rem;">
   <img class="card-img-top" src="..." alt="Card image cap">
   <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <div class="container new-tweet">
+        <% if @tweet.errors.any? %>
+            <h2>We have some errors here!</h2>
+            <ul>
+                <% @tweet.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+                <% end %>
+            </ul>
+        <% end %>
+
+        <%= form_for [@tweet] do |f| %>
+            <%= f.label :tweet, "Tweet" %>
+            <%= f.text_field :tweet %>
+
+            <%= f.submit %>
+        <% end %>
+    </div>
   </div>
   <ul class="list-group list-group-flush">
     <li class="list-group-item">Cras justo odio</li>

@@ -1,12 +1,12 @@
-<div class="container">
+<div class="container d-flex justify-content-center tweet-table">
   <div class="row">
     <div class="col-md-12">
-    <%= form_for [@tweet] do |f| %>
-    <%= f.label :post, "Tweet" %>
-    <%= f.text_field :post %>
+      <%= form_for [@tweet] do |f| %>
+      <%= f.label :post, "Tweet" %>
+      <%= f.text_field :post %>
 
-    <%= f.submit %>
-<% end %>
+      <%= f.submit %>
+      <% end %>
       <h1>Tweet</h1>
       <table class="table table-hover">
         <thead>
