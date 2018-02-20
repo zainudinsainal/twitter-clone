@@ -1,22 +1,12 @@
-<% if @tweet.errors.any? %>
-    <h2>We have some errors here!</h2>
-    <ul>
-        <% @tweet.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-        <% end %>
-    </ul>
-<% end %>
-
-<%= form_for [@tweet] do |f| %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+    <%= form_for [@tweet] do |f| %>
     <%= f.label :post, "Tweet" %>
     <%= f.text_field :post %>
 
     <%= f.submit %>
 <% end %>
-
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
       <h1>Tweet</h1>
       <table class="table table-hover">
         <thead>

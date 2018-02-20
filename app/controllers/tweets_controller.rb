@@ -5,8 +5,9 @@ class TweetsController < ApplicationController
   before_action :set_tweet, only:  [:show, :edit, :update, :destroy]
 
   def index
-    @tweets = Tweet.all
     @tweet = Tweet.new
+    @tweets = Tweet.all
+    
   end
 
    def create
@@ -15,8 +16,8 @@ class TweetsController < ApplicationController
       flash[:notice] = "Tweet was successfully created"
       redirect_to tweets_path
     else
-      flash.now[:alert] = "Tweet was failed to create"
-      render :new
+      flash[:alert] = "Tweet was failed to create"
+      redirect_to tweets_path
     end
   end
 
