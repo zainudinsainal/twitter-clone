@@ -19,4 +19,9 @@
       </div>
     </div>
   </div>
+  <div>
+    <% @user_tweet.each do |tweet| %>
+    <%= tweet.post%>
+    <% end %>
+  </div>
 </div>

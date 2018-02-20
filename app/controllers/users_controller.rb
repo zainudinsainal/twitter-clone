@@ -2,6 +2,14 @@ class UsersController < ApplicationController
 
   before_action :set_user, only:  [:show, :edit, :update]
 
+  def index
+    @users = User.all
+  end
+
+  def show
+    @user_tweet = @user.tweets
+  end
+
   def edit
     unless @user == current_user
       redirect_to user_path(@user)

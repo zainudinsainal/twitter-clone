@@ -6,5 +6,5 @@ Rails.application.routes.draw do
   
   resources :tweets
 
-  resources :users, only: [:show, :edit, :update]
+  resources :users, only: [:index, :show, :edit, :update]
 end
