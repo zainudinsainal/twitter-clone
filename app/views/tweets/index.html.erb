@@ -11,22 +11,15 @@
       <table class="table table-hover">
         <thead>
           <tr>
-            <th scope="col">#</th>
             <th scope="col">Tweet</th>
             <th scope="col">Actions</th>
           </tr>
         </thead>
         <tbody>
-          <% @tweets.each do |tweet| %>
+          <% @user_tweet.each do |tweet| %>
           <tr>
-            <th scope="row"><%= tweet.id %></th>
             <td><%= tweet.post %></td>
-            <td>
-              <%= link_to 'Show', tweet_path(tweet) %>
-              <%= link_to 'Edit', edit_tweet_path(tweet) %>
-              <%= link_to 'Delete', tweet_path(tweet), method: :delete, data: {confirm:"Are you sure?"} %>
-            </td>
-          </tr>
+            <td><%= link_to '♡ Like', tweet.like, remote: true %></td>
           <% end %>
         </tbody>
       </table>

@@ -7,6 +7,7 @@ class TweetsController < ApplicationController
   def index
     @tweet = Tweet.new
     @tweets = Tweet.all
+    @user_tweet = current_user.tweets
    # @users = @tweet.find #followers tweets
   end
 
