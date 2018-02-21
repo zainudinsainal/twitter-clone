@@ -13,6 +13,7 @@
             <th scope="col">User</th>
             <th scope="col">Tweet Count</th>
             <th scope="col">Following Count</th>
+            <th scope="col">Followers Count</th>
             <th scope="col">Like Count</th>
           </tr>
         </thead>
@@ -20,8 +21,9 @@
           <% @users.each do |user| %>
           <tr>
             <td><%= user.name %></td>
-            <td><%=  %></td>
-            <td><%=  %></td>
+            <td><%= user.tweets.count %></td>
+            <td><%= Relationship.where(follower_id: user.id).count %></td>
+            <td><%= Relationship.where(following_id: user.id).count %></td>
             <td><%=  %></td>
           </tr>
           <% end %>

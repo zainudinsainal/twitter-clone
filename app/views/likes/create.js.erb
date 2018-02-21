@@ -1,0 +1,4 @@
+$('#likes-buttons-<%= @tweet.id %>').html('<%= j render 'tweets/likes_buttons', tweet: @tweet %>');
+
+$('#small-likes-<%= @tweet.id %>').html('<%= j render 'tweets/small_likes', tweet: @tweet %>');
+$('#data-bar').html('<%= j render 'tweets/data_bar' %>');
