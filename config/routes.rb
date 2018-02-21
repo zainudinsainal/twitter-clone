@@ -6,5 +6,15 @@ Rails.application.routes.draw do
   
   resources :tweets
 
-  resources :users, only: [:index, :show, :edit, :update]
+  resources :users, only: [:index, :show, :edit, :update] do
+    resources :replies, only: [:create, :destroy]
+  end
+
+  namespace :admin do
+    resources :tweets
+    resources :users
+    root "tweets#index"
+  end
+
+
 end

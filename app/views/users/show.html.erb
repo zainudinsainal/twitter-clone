@@ -3,9 +3,9 @@
     <div class="col-md-10 offset-md-1 mt-3">
       <div class="row">
         <div class="col-md-3 col-sm-4">
-            <%= image_tag @user.image, class: "img-fluid rounded-circle mx-auto" %>
+            <%= image_tag @user.image, class: "img-fluid rounded mx-auto" %>
         </div>
-        <div class="col-md-9 col-sm-8">
+        <div class="col-md-7 col-sm-8 mb-3 ml-2">
           <h2><%= @user.name %></h2>
           <h2><%= @user.username %></h2>
           <p><strong><%= @user.email %></strong></p>
@@ -19,9 +19,12 @@
       </div>
     </div>
   </div>
-  <div>
-    <% @user_tweet.each do |tweet| %>
-    <%= tweet.post%>
+  <% @user_tweet.each do |tweet| %>
+    <div class="card">
+      <div class="card-body">
+        <small><b><%= @user.name %></b> <i>@<%= @user.username %></i> Created <%= distance_of_time_in_words(tweet.created_at, Time.now)%> ago</small>
+        <p><%= tweet.post %></p>
+      </div>
+    </div>
     <% end %>
-  </div>
 </div>
