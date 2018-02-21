@@ -26,10 +26,22 @@
       <% @user_tweet.each do |tweet| %>
       <div class="card">
         <div class="card-body">
-          <small><b><%= @user.name %></b> <i>@<%= @user.username %></i> Created <%= distance_of_time_in_words(tweet.created_at, Time.now)%> ago</small>
+          <small><b><%= @user.name %></b> <i>@<%= @user.username %>
           <p><%= tweet.post %></p>
           <p><%= icon("fas", "heart") %></p>
-          <p><%=  link_to 'Reply', tweet_path(tweet) %></p>
+          <p><%=  link_to 'Reply', tweet_path(tweet) %></i> Created <%= distance_of_time_in_words(tweet.created_at, Time.now)%> ago</small></p>
+        </div>
+      </div>
+      <% end %>
+      <% @user_following.each do |following| %>
+      <div class="card">
+        <div class="card-body">
+          <small><b><%= following.name %></b> <i>@<%= following.username %>
+          <% following.tweets.each do |tweet| %>
+          <p><%= tweet.post %></p>
+          <p><%= icon("fas", "heart") %></p>
+          <p><%=  link_to 'Reply', tweet_path(tweet) %></i> Created <%= distance_of_time_in_words(tweet.created_at, Time.now)%> ago</small></p>
+          <% end %>
         </div>
       </div>
       <% end %>
