@@ -24,6 +24,7 @@
         <div class="card-body">
           <small><b><%= @user.name %></b> <i>@<%= @user.username %></i> Created <%= distance_of_time_in_words(tweet.created_at, Time.now)%> ago</small>
           <p><%= tweet.post %></p>
+          <p><%= icon('fas', 'flag') %></p>
         </div>
       </div>
       <% end %>

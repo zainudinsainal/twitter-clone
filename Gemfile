@@ -22,6 +22,7 @@ gem 'devise', '~> 4.4', '>= 4.4.1'
 gem 'carrierwave', '~> 1.2', '>= 1.2.2'
 gem 'bootstrap', '~> 4.0'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
+gem 'font-awesome-sass', '~> 5.0', '>= 5.0.6.2'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
