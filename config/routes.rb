@@ -4,10 +4,11 @@ Rails.application.routes.draw do
   
   devise_for :users
   
-  resources :tweets
+  resources :tweets do
+    resources :replies, only: [:create, :destroy]
+  end
 
   resources :users, only: [:index, :show, :edit, :update] do
-    resources :replies, only: [:create, :destroy]
     resources :relationships, only: [:create, :destroy]
     member do
       get :followings, :followers

@@ -29,6 +29,7 @@
           <small><b><%= @user.name %></b> <i>@<%= @user.username %></i> Created <%= distance_of_time_in_words(tweet.created_at, Time.now)%> ago</small>
           <p><%= tweet.post %></p>
           <p><%= icon("fas", "heart") %></p>
+          <p><%=  link_to 'Reply', tweet_path(tweet) %></p>
         </div>
       </div>
       <% end %>
