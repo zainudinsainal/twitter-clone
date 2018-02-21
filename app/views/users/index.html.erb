@@ -6,12 +6,11 @@
         <div class="card-body">
           <small><b><%= user.name %></b> <i>@<%= link_to user.username, user_path(user) %></i></small>
           <p>Latest Tweet: <%= user.tweets.last.try(:post) %></p>
-          <p><%= link_to 'Follow', user_path(current_user) %></p>
+              <p><strong><%= Relationship.where(follower_id: user.id).count %></strong> following <strong><%= Relationship.where(following_id: user.id).count %></strong> followers</p>
+          <p><%= render partial: 'follow_form', locals: {user: user} %></p>
         </div>
       </div>
       <% end %>
-      
-      
     </div>
   </div>
 </div>

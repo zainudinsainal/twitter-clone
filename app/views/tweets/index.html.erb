@@ -5,6 +5,9 @@
       <h5><%= @user.name %></h5>
       <h5>@<%= @user.username %></h5>
       <div><%= simple_format @user.bio %></div>
+      <section class="stats">
+        <%= render 'shared/stats' %>
+      </section>
     </div>
 
     <div class="col-md-6 mt-3">
