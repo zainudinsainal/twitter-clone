@@ -30,11 +30,15 @@
           <small><b><%= @user.name %></b> <i>@<%= link_to @user.username, user_path(@user) %></i> - <%= distance_of_time_in_words(tweet.created_at, Time.now)%> ago</small>
           <p><%= tweet.post %></p>
             <%=  link_to (icon("far", "comment")), tweet_path(tweet) %> <%= Reply.where(tweet_id: tweet.id).count %>&nbsp;&nbsp;&nbsp;&nbsp;
-          <div id="likes-buttons_<%= tweet.id %>">
-            <%= render "likes_buttons", tweet: tweet %>
+          <div id="likes">
+            <div id="likes-buttons_<%= tweet.id %>">
+              <%= render "likes_buttons", tweet: tweet %>
+            </div>
           </div>
-          <div id="id-counter_<%= tweet.id %>">
-            <%= render "counter", tweet: tweet %>
+          <div id="counters">
+            <div id="id-counter_<%= tweet.id %>">
+              <%= render "counter", tweet: tweet %>
+            </div>
           </div>
         </div>
       </div>
@@ -46,11 +50,15 @@
               <small><b><%= following.name %></b> <i>@<%= link_to following.username, user_path(following) %></i> - <%= distance_of_time_in_words(tweet.created_at, Time.now)%> ago</small>
               <p><%= tweet.post %></p>
               <%=  link_to (icon("far", "comment")), tweet_path(tweet) %> <%= Reply.where(tweet_id: tweet.id).count %>&nbsp;&nbsp;&nbsp;&nbsp;
-              <div id="likes-buttons_<%= tweet.id %>">
-                <%= render "likes_buttons", tweet: tweet %>
+              <div id="likes">
+                <div id="likes-buttons_<%= tweet.id %>">
+                  <%= render "likes_buttons", tweet: tweet %>
+                </div>
               </div>
-              <div id="id-counter_<%= tweet.id %>">
-                <%= render "counter", tweet: tweet %>
+              <div id="counters">
+                <div id="id-counter_<%= tweet.id %>">
+                  <%= render "counter", tweet: tweet %>
+                </div>
               </div>
             </div>
           </div>
