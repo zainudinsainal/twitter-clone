@@ -3,10 +3,12 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-body">
-          <small><b><%= @user.name %></b> <i>@<%= @user.username %></i> Created <%= distance_of_time_in_words(@tweet.created_at, Time.now)%> ago</small>
+          <small><b><%= @tweet.user.name %></b> <i>@<%= @tweet.user.username %></i> Created <%= distance_of_time_in_words(@tweet.created_at, Time.now)%> ago</small>
           <h3><%= @tweet.post %></h3>
         </div>
       </div>
+      <br>
+      <h4>Replies</h4>
     </div>
     <div class="col-md-12">
       <% @tweet.replies.each do |reply| %>
