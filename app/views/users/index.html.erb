@@ -23,7 +23,9 @@
           <p>Latest Tweet: <%= user.tweets.last.try(:post) %></p>
               <p><strong><%= Relationship.where(follower_id: user.id).count %></strong> following <strong><%= Relationship.where(following_id: user.id).count %></strong> followers</p>
           <% if user != current_user %>
-            <p><%= render partial: 'follow_form', locals: {user: user} %></p>
+            <div id="follow_<%= user.id %>">
+              <p><%= render partial: 'follow_form', locals: {user: user} %></p>
+            </div>
           <% end %>
         </div>
       </div>
