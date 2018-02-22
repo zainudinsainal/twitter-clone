@@ -1,3 +1,3 @@
-$('#likes-buttons').html('<%= j render 'tweets/likes_buttons', tweet: @tweet %>');
+$('#likes-buttons_<%= @tweet.id %>').html('<%= j render 'tweets/likes_buttons', tweet: @tweet %>');
 
-$('#id-counter').html('<%= j render 'tweets/counter' %>');
+$('#id-counter_<%= @tweet.id %>').html('<%= j render 'tweets/counter', tweet: @tweet %>');
