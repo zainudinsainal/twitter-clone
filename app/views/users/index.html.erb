@@ -1,6 +1,27 @@
-<div class="container mt-3">
-  <div class="row d-flex justify-content-center">
-    <div class="col-md-6">
+<div class="container">
+  <div class="row">
+    <div class="col-md-3 mt-3">
+      <div class="card">
+        <div class="card-body">
+          <%= image_tag @user.image, class: "img-fluid rounded mx-auto" %>
+          <h2><%= @user.name.capitalize %></h2>
+          <h7 class="text-colour">@<%= @user.username %></h7>
+          <div>Joined <%= @user.created_at.strftime("%B %Y") %></div>
+          <div><%= simple_format @user.bio %></div>
+          <br>
+            <section class="stats">
+              <%= render 'shared/stats' %>
+            </section>
+            <br>
+          <% if @user.email == current_user.email %>
+            <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-outline-primary" %>
+          <% end %>
+        </div>
+        <div class="clearfix"></div>
+        <br>
+      </div>
+    </div>
+    <div class="col-md-6 mt-3">
     <% @users.each do |user| %>
       <div class="card">
         <div class="card-body">
@@ -11,6 +32,13 @@
         </div>
       </div>
       <% end %>
+    </div>
+    <div class="col-md-3 mt-3">
+      <div class="card">
+        <div class="card-body">
+          <p>Who to follow <%=  %></p>
+        </div>
+      </div>
     </div>
   </div>
 </div>
