@@ -30,10 +30,10 @@
           <small><b><%= @user.name %></b> <i>@<%= @user.username %></i> - <%= distance_of_time_in_words(tweet.created_at, Time.now)%> ago</small>
           <p><%= tweet.post %></p>
             <%=  link_to (icon("far", "comment")), tweet_path(tweet) %> <%= Reply.where(tweet_id: tweet.id).count %>&nbsp;&nbsp;&nbsp;&nbsp;
-          <span id="likes-buttons">
+          <div id="likes-buttons">
             <%= render "likes_buttons", tweet: tweet %>
-          </span>
-          <span id="id-counter">
+          </div>
+          <div id="id-counter">
             <%= render "counter", tweet: tweet %>
           </div>
         </div>
@@ -46,12 +46,12 @@
               <small><b><%= following.name %></b> <i>@<%= following.username %></i> - <%= distance_of_time_in_words(tweet.created_at, Time.now)%> ago</small>
               <p><%= tweet.post %></p>
               <%=  link_to (icon("far", "comment")), tweet_path(tweet) %> <%= Reply.where(tweet_id: tweet.id).count %>&nbsp;&nbsp;&nbsp;&nbsp;
-              <span id="likes-buttons">
+              <div id="likes-buttons">
                 <%= render "likes_buttons", tweet: tweet %>
-              </span>
-              <span id="id-counter">
+              </div>
+              <div id="id-counter">
                 <%= render "counter", tweet: tweet %>
-              </span>
+              </div>
             </div>
           </div>
         <% end %>
