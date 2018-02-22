@@ -21,4 +21,42 @@
   width:100%
 }
 
+body {
+  background-color: #e6ecf0
+}
+
+.btn-unfollow:hover {
+  color: #fff;
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+span.after{
+  display:none;
+}
+
+.btn-unfollow:hover span.before{
+  display:none;
+}
+
+.btn-unfollow:hover span.after{
+  display:block;
+}
+
+.text-colour {
+  color:#657786
+}
+
+#bg-color {
+  background-color: white !important;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: rgba(0, 0, 0, 0.9);
+}
+
+.navbar-light .navbar-text {
+    color: rgba(0, 0, 0, 0.9);
+}
+
 

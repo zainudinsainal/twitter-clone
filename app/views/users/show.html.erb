@@ -1,33 +1,42 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-10 offset-md-1 mt-3">
-      <div class="row">
-        <div class="col-md-3 col-sm-4">
-            <%= image_tag @user.image, class: "img-fluid rounded mx-auto" %>
-        </div>
-        <div class="col-md-7 col-sm-8 mb-3 ml-2">
-          <h2><%= @user.name %></h2>
-          <h2><%= @user.username %></h2>
-          <p><strong><%= @user.email %></strong></p>
+    <div class="col-md-3 mt-3">
+      <div class="card">
+        <div class="card-body">
+          <%= image_tag @user.image, class: "img-fluid rounded mx-auto" %>
+          <h5><%= @user.name.capitalize %></h5>
+          <h7 class="text-colour">@<%= @user.username %></h7>
+          <div>Joined <%= @user.created_at.strftime("%B %Y") %></div>
           <div><%= simple_format @user.bio %></div>
+          <br>
             <section class="stats">
               <%= render 'shared/stats' %>
             </section>
+            <br>
           <% if @user.email == current_user.email %>
-            <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-primary" %>
+            <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-outline-primary" %>
           <% end %>
         </div>
         <div class="clearfix"></div>
         <br>
       </div>
     </div>
-  </div>
-  <% @user_tweet.each do |tweet| %>
-    <div class="card">
-      <div class="card-body">
-        <small><b><%= @user.name %></b> <i>@<%= @user.username %></i> Created <%= distance_of_time_in_words(tweet.created_at, Time.now)%> ago</small>
-        <p><%= tweet.post %></p>
+    <div class="col-md-6 mt-3">
+    <% @user_tweet.each do |tweet| %>
+      <div class="card">
+        <div class="card-body">
+          <small><b><%= @user.name %></b> <i>@<%= @user.username %></i> Created <%= distance_of_time_in_words(tweet.created_at, Time.now)%> ago</small>
+          <p><%= tweet.post %></p>
+        </div>
+      </div>
+      <% end %>
+    </div>
+    <div class="col-md-3 mt-3">
+      <div class="card">
+        <div class="card-body">
+          <p>Who to follow <%=  %></p>
+        </div>
       </div>
     </div>
-    <% end %>
+  </div>
 </div>

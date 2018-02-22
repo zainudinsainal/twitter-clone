@@ -1,53 +1,61 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-3 mt-3 mr-5">
-      <%= image_tag @user.image, class: "img-fluid rounded mx-auto" %>
-      <h5><%= @user.name %></h5>
-      <h5>@<%= @user.username %></h5>
-      <div><%= simple_format @user.bio %></div>
-      <section class="stats">
-        <%= render 'shared/stats' %>
-      </section>
-      <p>Top 10 followers: <%=  %></p>
+    <div class="col-md-3 mt-3">
+      <div class="card">
+        <div class="card-body">
+          <%= image_tag @user.image, class: "img-fluid rounded mx-auto" %>
+          <h5><%= @user.name.capitalize %></h5>
+          <h7 class="text-colour">@<%= @user.username %></h7>
+          <div>Joined <%= @user.created_at.strftime("%B %Y") %></div>
+          <br>
+          <section class="stats">
+            <%= render 'shared/stats' %>
+          </section>
+        </div>
+      </div>
     </div>
-
     <div class="col-md-6 mt-3">
       <%= form_for [@tweet] do |f| %>
       <div class="form-group">
-      <%= f.text_area :post, class: 'form-control', rows: 4, placeholder: "What's happening?", maxlength: 140, id: 'textbox' %>
+      <%= f.text_area :post, class: 'form-control', rows: 1, placeholder: "What's happening?", maxlength: 140, id: 'textbox' %>
        <div align="right"><span id="chars">140</span> characters remaining</div>
       </div>
-      <div class="form-group">
-        <%= f.submit "Post", class: 'btn btn-primary btn-block' %>
+      <div class="form-group d-flex justify-content-end">
+        <%= f.submit "Tweet", class: 'btn btn-primary', id: 'submitButtonId' %>
       </div>
       <% end %>
-      
-      <h3>Tweet</h3>
       <% @user_tweet.each do |tweet| %>
       <div class="card">
         <div class="card-body">
-          <small><b><%= @user.name %></b> <i>@<%= @user.username %>
+          <small><b><%= @user.name %></b> <i>@<%= @user.username %></i> - <%= distance_of_time_in_words(tweet.created_at, Time.now)%> ago</small>
           <p><%= tweet.post %></p>
-          <p><%= icon("fas", "heart") %></p>
-          <p><%=  link_to 'Reply', tweet_path(tweet) %></i> Created <%= distance_of_time_in_words(tweet.created_at, Time.now)%> ago</small></p>
+          <%=  link_to (icon("far", "comment")), tweet_path(tweet) %> 28&nbsp&nbsp&nbsp&nbsp
+          <%= icon("fas", "heart") %>
+          28
         </div>
       </div>
       <% end %>
       <% @user_following.each do |following| %>
+        <% following.tweets.each do |tweet| %>
+          <div class="card">
+            <div class="card-body">
+              <small><b><%= following.name %></b> <i>@<%= following.username %></i> - <%= distance_of_time_in_words(tweet.created_at, Time.now)%> ago</small>
+              <p><%= tweet.post %></p>
+              <%=  link_to (icon("far", "comment")), tweet_path(tweet) %> 28&nbsp&nbsp&nbsp&nbsp
+              <%= icon("fas", "heart") %>
+              28
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="col-md-3 mt-3">
       <div class="card">
         <div class="card-body">
-          <small><b><%= following.name %></b> <i>@<%= following.username %>
-          <% following.tweets.each do |tweet| %>
-          <p><%= tweet.post %></p>
-          <p><%= icon("fas", "heart") %></p>
-          <p><%=  link_to 'Reply', tweet_path(tweet) %></i> Created <%= distance_of_time_in_words(tweet.created_at, Time.now)%> ago</small></p>
-          <% end %>
+          <p>Who to follow <%=  %></p>
         </div>
       </div>
-      <% end %>
     </div>
   </div>
 </div>
-
-
-

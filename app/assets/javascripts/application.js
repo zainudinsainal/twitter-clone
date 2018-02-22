@@ -15,5 +15,6 @@
 //= require bootstrap-sprockets
 //= require rails-ujs
 //= require turbolinks
-//= require character.js
+//= require textbox
+//= require character
 //= require_tree .
