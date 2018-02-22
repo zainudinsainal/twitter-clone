@@ -27,7 +27,7 @@
       <% @user_tweet.each do |tweet| %>
       <div class="card">
         <div class="card-body">
-          <small><b><%= @user.name %></b> <i>@<%= @user.username %></i> - <%= distance_of_time_in_words(tweet.created_at, Time.now)%> ago</small>
+          <small><b><%= @user.name %></b> <i>@<%= link_to @user.username, user_path(@user) %></i> - <%= distance_of_time_in_words(tweet.created_at, Time.now)%> ago</small>
           <p><%= tweet.post %></p>
             <%=  link_to (icon("far", "comment")), tweet_path(tweet) %> <%= Reply.where(tweet_id: tweet.id).count %>&nbsp;&nbsp;&nbsp;&nbsp;
           <div id="likes-buttons">
@@ -43,7 +43,7 @@
         <% following.tweets.each do |tweet| %>
           <div class="card">
             <div class="card-body">
-              <small><b><%= following.name %></b> <i>@<%= following.username %></i> - <%= distance_of_time_in_words(tweet.created_at, Time.now)%> ago</small>
+              <small><b><%= following.name %></b> <i>@<%= link_to following.username, user_path(following) %></i> - <%= distance_of_time_in_words(tweet.created_at, Time.now)%> ago</small>
               <p><%= tweet.post %></p>
               <%=  link_to (icon("far", "comment")), tweet_path(tweet) %> <%= Reply.where(tweet_id: tweet.id).count %>&nbsp;&nbsp;&nbsp;&nbsp;
               <div id="likes-buttons">
