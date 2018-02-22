@@ -7,7 +7,9 @@
           <h5><%= @user.name.capitalize %></h5>
           <h7 class="text-colour">@<%= @user.username %></h7>
           <div>Joined <%= @user.created_at.strftime("%B %Y") %></div>
-          <p><%= render partial: 'follow_form', locals: {user: @user} %></p>
+          <% if @user != current_user %>
+            <p><%= render partial: 'follow_form', locals: {user: @user} %></p>
+          <% end %>
           <div><%= simple_format @user.bio %></div>
           <br>
             <section class="stats">
