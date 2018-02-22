@@ -31,11 +31,15 @@
           <small><b><%= @user.name %></b> <i>@<%= @user.username %></i> Created <%= distance_of_time_in_words(tweet.created_at, Time.now)%> ago</small>
           <p><%= tweet.post %></p>
           <%=  link_to (icon("far", "comment")), tweet_path(tweet) %> <%= Reply.where(tweet_id: tweet.id).count %>&nbsp;&nbsp;&nbsp;&nbsp;
-          <div id="likes-buttons">
-            <%= render "likes_buttons", tweet: tweet %>
+          <div id="likes">
+            <div id="likes-buttons_<%= tweet.id %>">
+              <%= render "likes_buttons", tweet: tweet %>
+            </div>
           </div>
-          <div id="id-counter">
-            <%= render "counter", tweet: tweet %>
+          <div id="counters">
+            <div id="id-counter_<%= tweet.id %>">
+              <%= render "counter", tweet: tweet %>
+            </div>
           </div>
         </div>
       </div>
