@@ -1,6 +1,6 @@
 class Like < ApplicationRecord
 
-  belongs_to :tweet, uniqueness: true
-  belongs_to :user, uniqueness: true
+  belongs_to :tweet
+  belongs_to :user
   
 end
