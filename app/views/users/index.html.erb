@@ -4,21 +4,15 @@
       <div class="card">
         <div class="card-body">
           <%= image_tag @user.image, class: "img-fluid rounded mx-auto" %>
-          <h2><%= @user.name.capitalize %></h2>
+          <h5><%= @user.name.capitalize %></h5>
           <h7 class="text-colour">@<%= @user.username %></h7>
           <div>Joined <%= @user.created_at.strftime("%B %Y") %></div>
-          <div><%= simple_format @user.bio %></div>
           <br>
             <section class="stats">
               <%= render 'shared/stats' %>
             </section>
-            <br>
-          <% if @user.email == current_user.email %>
-            <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-outline-primary" %>
-          <% end %>
         </div>
         <div class="clearfix"></div>
-        <br>
       </div>
     </div>
     <div class="col-md-6 mt-3">
