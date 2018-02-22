@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3 mt-3">
+      <div class="card">
+        <div class="card-body">
+          <%= image_tag @user.image, class: "img-fluid rounded mx-auto" %>
+          <h5><%= @user.name.capitalize %></h5>
+          <h7 class="text-colour">@<%= @user.username %></h7>
+          <div>Joined <%= @user.created_at.strftime("%B %Y") %></div>
+          <br>
+          <section class="stats">
+            <%= render 'shared/stats' %>
+          </section>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 mt-3">
+      <% @users.each do |following| %>
+        <div class="card">
+          <div class="card-body">
+            <small><b><%= following.name %></b> <i>@<%= link_to following.username, user_path(following) %></i></small>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-md-3 mt-3">
+      <div class="card">
+        <div class="card-body">
+          <p>Who to follow <%=  %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
