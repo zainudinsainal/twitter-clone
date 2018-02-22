@@ -24,7 +24,7 @@
             <td><%= user.tweets.count %></td>
             <td><%= Relationship.where(follower_id: user.id).count %></td>
             <td><%= Relationship.where(following_id: user.id).count %></td>
-            <td><%=  %></td>
+            <td><%= Like.where(user_id: user.id).count %></td>
           </tr>
           <% end %>
         </tbody>
