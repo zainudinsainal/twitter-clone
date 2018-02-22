@@ -7,6 +7,7 @@
           <h5><%= @user.name.capitalize %></h5>
           <h7 class="text-colour">@<%= @user.username %></h7>
           <div>Joined <%= @user.created_at.strftime("%B %Y") %></div>
+          <p><%= render partial: 'follow_form', locals: {user: @user} %></p>
           <div><%= simple_format @user.bio %></div>
           <br>
             <section class="stats">
@@ -27,6 +28,13 @@
         <div class="card-body">
           <small><b><%= @user.name %></b> <i>@<%= @user.username %></i> Created <%= distance_of_time_in_words(tweet.created_at, Time.now)%> ago</small>
           <p><%= tweet.post %></p>
+          <%=  link_to (icon("far", "comment")), tweet_path(tweet) %> <%= Reply.where(tweet_id: tweet.id).count %>
+          <div id="likes-buttons">
+            <%= render "likes_buttons", tweet: tweet %>
+          </div>
+          <div id="id-counter">
+            <%= render "counter", tweet: tweet %>
+          </div>
         </div>
       </div>
       <% end %>
