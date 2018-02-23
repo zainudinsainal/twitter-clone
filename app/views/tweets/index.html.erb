@@ -29,7 +29,7 @@
         <div class="card-body">
           <small><b><%= @user.name %></b> <i>@<%= link_to @user.username, user_path(@user) %></i> - <%= distance_of_time_in_words(tweet.created_at, Time.now)%> ago</small>
           <p><%= tweet.post %></p>
-            <%=  link_to (icon("far", "comment")), tweet_path(tweet) %> <%= Reply.where(tweet_id: tweet.id).count %>&nbsp;&nbsp;&nbsp;&nbsp;
+            <%=  link_to (icon("far", "comment")), tweet_path(tweet) %> <%= tweet.replies.count %>&nbsp;&nbsp;&nbsp;&nbsp;
           <div id="likes">
             <div id="likes-buttons_<%= tweet.id %>">
               <%= render "likes_buttons", tweet: tweet %>
@@ -49,7 +49,7 @@
             <div class="card-body">
               <small><b><%= following.name %></b> <i>@<%= link_to following.username, user_path(following) %></i> - <%= distance_of_time_in_words(tweet.created_at, Time.now)%> ago</small>
               <p><%= tweet.post %></p>
-              <%=  link_to (icon("far", "comment")), tweet_path(tweet) %> <%= Reply.where(tweet_id: tweet.id).count %>&nbsp;&nbsp;&nbsp;&nbsp;
+              <%=  link_to (icon("far", "comment")), tweet_path(tweet) %> <%= tweet.replies.count %>&nbsp;&nbsp;&nbsp;&nbsp;
               <div id="likes">
                 <div id="likes-buttons_<%= tweet.id %>">
                   <%= render "likes_buttons", tweet: tweet %>
@@ -64,6 +64,16 @@
           </div>
         <% end %>
       <% end %>
+    </div>
+    <div class="col-md-3 mt-3">
+      <div class="card">
+        <div class="card-body">
+          <p>Your 10 Followers</p>
+          <% @user_followers.each do |follower| %></p>
+            <p><b><%= follower.name %></b> <i>@<%= link_to follower.username, user_path(follower) %></i></p>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
