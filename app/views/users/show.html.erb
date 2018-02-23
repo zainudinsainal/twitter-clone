@@ -7,8 +7,15 @@
           <h5><%= @user.name.capitalize %></h5>
           <h7 class="text-colour">@<%= @user.username %></h7>
           <div>Joined <%= @user.created_at.strftime("%B %Y") %></div>
+          <% if @user.tweets.count <= 1 %>
+            <div><%= @user.tweets.count %> tweet</div>
+          <% else %>
+            <div><%= @user.tweets.count %> tweets</div>
+          <% end %>
           <% if @user != current_user %>
-            <p><%= render partial: 'follow_form', locals: {user: @user} %></p>
+            <div id="follow_<%= @user.id %>">
+              <p><%= render partial: 'follow_form', locals: {user: @user} %></p>
+            </div>
           <% end %>
           <div><%= simple_format @user.bio %></div>
           <br>
@@ -44,6 +51,16 @@
         </div>
       </div>
       <% end %>
+    </div>
+    <div class="col-md-3 mt-3">
+      <div class="card">
+        <div class="card-body">
+          <p>Your Top 10 Followers</p>
+          <% @user_followers.each do |follower| %></p>
+            <p><b><%= follower.name %></b> <i>@<%= link_to follower.username, user_path(follower) %></i></p>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>

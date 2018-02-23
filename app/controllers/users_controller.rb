@@ -5,10 +5,14 @@ class UsersController < ApplicationController
   def index
     @users = User.all
     @user = current_user
+    @user_following = @user.followings
+    @user_followers = @user.followers.limit(10)
   end
 
   def show
     @user_tweet = @user.tweets
+    @user_following = @user.followings
+    @user_followers = @user.followers.limit(10)
   end
 
   def edit
