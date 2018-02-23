@@ -1,45 +1,38 @@
 <div class="container mt-3">
   <div class="row">
     <div class="col-md-12">
-
       <div class="card">
         <div class="card-body">
-          <small><b><%= @user.name %></b> <i>@<%= @user.username %></i> Created <%= distance_of_time_in_words(@tweet.created_at, Time.now)%> ago</small>
-          <p><%= @tweet.post %></p>
-          <p><%= icon("fas", "heart") %></p>
+          <small><b><%= @tweet.user.name %></b> <i>@<%= @tweet.user.username %></i> Created <%= distance_of_time_in_words(@tweet.created_at, Time.now)%> ago</small>
+          <h3><%= @tweet.post %></h3>
         </div>
       </div>
-
+      <br>
+      <h4>Replies</h4>
+    </div>
+    <div class="col-md-12">
+      <% @tweet.replies.each do |reply| %>
+      <div class="card">
+        <div class="card-body">
+        <small><b><%= reply.user.name %></b> <i>@<%= reply.user.username %></i> Created <%= distance_of_time_in_words(reply.created_at, Time.now)%> ago</small>
+          <p><%= reply.comment %></p>
+            <% if current_user.admin? %>
+              <%= link_to "Delete", tweet_reply_path(@tweet, reply), method: :delete %>
+            <% end %>
+        </div>
+      </div>
+      <% end %>
+    </div>
+    <div class="col-md-12">
+      <%= form_for [@tweet, @reply] do |f| %>
+      <div class="form-group">
+        <%= f.text_area :comment, placeholder: "Tweet your reply", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.submit class: "btn btn-primary" %>
+        <%= f.button "Cancel", type: :reset, class: "btn btn-outline-dark" %>
+      </div>
+    <% end %>
     </div>
   </div>
 </div>
-
-<div class="container">
-  <div class="row">
-  <div class="col-md-12">
-    <% @tweet.replies.each do |reply| %>
-    <div>
-      <h4><%= reply.user.name %></h4>
-      <p><%= simple_format reply.comment %></p>
-      <p class="text-muted">
-        <em><%= time_ago_in_words(reply.created_at) %> ago </em>
-         <% if current_user.admin? %>
-          <%= link_to "Delete", tweet_reply_path(@tweet, reply), method: :delete %>
-        <% end %>
-      </p>
-    </div>
-    <hr>
-    <% end %>
-  </div>
-  
-  <div class="col-md-12">
-    <%= form_for [@tweet, @reply] do |f| %>
-    <div class="form-group">
-      <%= f.text_area :comment, placeholder: "Tweet your reply", class: "form-control" %>
-    </div>
-    <div class="form-group">
-      <%= f.submit class: "btn btn-primary" %>
-      <%= f.button "Cancel", type: :reset, class: "btn btn-outline-dark" %>
-    </div>
-  <% end %>
-  </div>
