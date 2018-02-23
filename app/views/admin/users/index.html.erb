@@ -22,9 +22,9 @@
           <tr>
             <td><%= user.name %></td>
             <td><%= user.tweets.count %></td>
-            <td><%= Relationship.where(follower_id: user.id).count %></td>
-            <td><%= Relationship.where(following_id: user.id).count %></td>
-            <td><%= Like.where(user_id: user.id).count %></td>
+            <td><%= user.followings.count %></td>
+            <td><%= user.followers.count %></td>
+            <td><%= user.likes.count %></td>
           </tr>
           <% end %>
         </tbody>
