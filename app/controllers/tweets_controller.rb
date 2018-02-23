@@ -8,6 +8,7 @@ class TweetsController < ApplicationController
     @user_tweet = current_user.tweets.order("created_at DESC")
     @user = current_user
     @user_following = @user.followings
+    @user_followers = @user.followers.limit(10)
   end
 
    def create
