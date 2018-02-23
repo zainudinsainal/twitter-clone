@@ -55,7 +55,7 @@
     <div class="col-md-3 mt-3">
       <div class="card">
         <div class="card-body">
-          <p>Your Top 10 Followers</p>
+          <p>Your 10 Followers</p>
           <% @user_followers.each do |follower| %></p>
             <p><b><%= follower.name %></b> <i>@<%= link_to follower.username, user_path(follower) %></i></p>
           <% end %>
