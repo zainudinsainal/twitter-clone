@@ -22,7 +22,8 @@
 }
 
 body {
-  background-color: #e6ecf0
+  background-color: #e6ecf0;
+  font-family: 'Lato', sans-serif;
 }
 
 .btn-unfollow:hover {
@@ -48,15 +49,28 @@ span.after{
 }
 
 #bg-color {
-  background-color: white !important;
+  background-color: white;
+}
+
+.navbar {
+  padding: 0.2rem 1rem;
 }
 
 .navbar-light .navbar-nav .nav-link {
-    color: rgba(0, 0, 0, 0.9);
+    color: #aaacaf;
+}
+
+.navbar-item {
+    color: #aaacaf;
 }
 
 .navbar-light .navbar-text {
-    color: rgba(0, 0, 0, 0.9);
+    color: #aaacaf;
+}
+
+.navbar-light .navbar-brand {
+  color: #aaacaf;
+  font-size: 1rem;
 }
 
 #counters {
