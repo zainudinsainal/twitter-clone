@@ -27,8 +27,15 @@
             <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-outline-primary" %>
           <% end %>
         </div>
-        <div class="clearfix"></div>
         <br>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h5>Trending</h5>
+          <% @tags.each do |tag| %>
+            <p><%= link_to tag.content, tag_path(tag) %></p>
+          <% end %>
+        </div>
       </div>
     </div>
     <div class="col-md-6 mt-3">

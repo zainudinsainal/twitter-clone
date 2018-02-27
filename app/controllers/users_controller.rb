@@ -7,12 +7,14 @@ class UsersController < ApplicationController
     @user = current_user
     @user_following = @user.followings
     @user_followers = @user.followers.limit(10)
+    @tags = Tag.all
   end
 
   def show
     @user_tweet = @user.tweets
     @user_following = @user.followings
     @user_followers = @user.followers.limit(10)
+    @tags = Tag.all
   end
 
   def edit
