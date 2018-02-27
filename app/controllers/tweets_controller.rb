@@ -1,6 +1,6 @@
 class TweetsController < ApplicationController
 
-  before_action :set_tweet, only:  [:show, :edit, :update, :destroy]
+  before_action :set_tweet, only:  [:show, :destroy]
 
   def index
     @tweet = Tweet.new
@@ -30,15 +30,7 @@ class TweetsController < ApplicationController
     end
 
   def show
-    @tweet = Tweet.find(params[:id])
     @reply = Reply.new
-
-  end
-
-  def destroy
-    @restaurant.destroy
-    redirect_to admin_restaurants_path
-    flash[:alert] = "restaurant was deleted"
   end
 
   private
