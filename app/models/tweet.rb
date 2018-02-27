@@ -5,4 +5,7 @@ class Tweet < ApplicationRecord
   has_many :likes
   has_many :replies
 
+  has_many :tags_tweets
+  has_many :tags, through: :tags_tweets
+
 end

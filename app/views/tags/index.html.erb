@@ -1,0 +1,7 @@
+<% @tags.each do |tag| %>
+      <div class="card">
+        <div class="card-body">
+          <small><b><%= tag %></b> <i><%= link_to @tags.content, tag_path(tag) %></small>
+        </div>
+      </div>
+<% end %>
