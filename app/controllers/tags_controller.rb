@@ -12,10 +12,4 @@ class TagsController < ApplicationController
     @user_followers = @user.followers.limit(10)
   end
 
-  private
-
-  def tag_params
-    params.require(:tag).permit(:content)
-  end
-
 end
