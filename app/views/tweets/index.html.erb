@@ -20,6 +20,7 @@
       </div>
       <div class="card">
         <div class="card-body">
+          Trending
           <% @tags.each do |tag| %>
             <p><%= link_to tag.content, tag_path(tag) %></p>
           <% end %>
@@ -60,10 +61,6 @@
           <div class="card">
             <div class="card-body">
               <small><b><%= following.name %></b> <i>@<%= link_to following.username, user_path(following) %></i> - <%= distance_of_time_in_words(tweet.created_at, Time.now)%> ago</small>
-              <p><%= tweet.post %></p>
-              <% tweet.tags.all.each do |tag| %>
-                <%=  link_to "#{ tag.content }", tag_path(tag) %>
-              <% end %>
               <%=  link_to (icon("far", "comment")), tweet_path(tweet) %> <%= tweet.replies.count %>&nbsp;&nbsp;&nbsp;&nbsp;
               <div id="likes">
                 <div id="likes-buttons_<%= tweet.id %>">
