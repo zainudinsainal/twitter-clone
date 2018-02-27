@@ -18,6 +18,13 @@
           </section>
         </div>
       </div>
+      <div class="card">
+        <div class="card-body">
+          <% @tags.each do |tag| %>
+            <p><%= link_to tag.content, tag_path(tag) %></p>
+          <% end %>
+        </div>
+      </div>
     </div>
     <div class="col-md-6 mt-3">
       <%= form_for [@tweet] do |f| %>

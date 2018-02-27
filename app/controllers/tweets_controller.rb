@@ -9,7 +9,7 @@ class TweetsController < ApplicationController
     @user = current_user
     @user_following = @user.followings
     @user_followers = @user.followers.limit(10)
-    @tag = Tag.new
+    @tags = Tag.all
   end
 
    def create
@@ -48,7 +48,7 @@ class TweetsController < ApplicationController
   end
 
   def set_tweet
-    @tweet = Tweet.find(params[:id, :tags])
+    @tweet = Tweet.find(params[:id])
   end
 
 end
