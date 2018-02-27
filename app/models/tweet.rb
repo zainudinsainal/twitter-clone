@@ -4,5 +4,6 @@ class Tweet < ApplicationRecord
   validates :post, presence: true, length: { maximum: 140 }
   has_many :likes
   has_many :replies
+  has_many :tags
 
 end
