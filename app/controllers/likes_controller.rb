@@ -17,10 +17,4 @@ class LikesController < ApplicationController
 
 	end
 
-	private
-
-	def like_params
-		params.require(:like).permit(:tweet)
-	end
-
 end
