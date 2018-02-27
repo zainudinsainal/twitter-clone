@@ -16,6 +16,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :tags, only: [:index, :show]
+
   namespace :admin do
     resources :tweets
     resources :users
